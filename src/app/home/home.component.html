@@ -1,18 +1,27 @@
 <div *ngIf="isAllSongs; else playList">
-    <button type="button" (click)="goToPlaylistTab()">playlist tab</button>
-    <input type="text" (input)="searchSong($event.target.value)">
-    <ng-container *ngFor="let song of songs | async">
-        <div style="border: 1px solid red; padding: 10px">
-            <div style="display: flex; align-items: center;">
-                <h3 style="margin-right: 10px;">{{ song.title }} </h3>
-                <p>{{ song.playTime }}</p>
+    <div class="top-header">
+        <button type="button" class="tab-btn" (click)="goToPlaylistTab()">playlist tab</button>
+        <input type="text" class="search-ip" (input)="searchSong($event.target.value)">
+    </div>
+    <div class="play-container">
+        <ng-container *ngFor="let song of songs | async">
+            <div class="play-card">
+                <div class="play-icon">
+                    <img src="assets/92c952.png" class="play-img" />
+                </div>
+                <div class="play-content">
+                    <div class="play-info">
+                        <h3 class="song-title">{{ song.title }} </h3>
+                        <p class="song-time">{{ song.playTime }}</p>
+                    </div>
+                    <div class="player-info">
+                        <span class="album-title">{{ song.album.title }}</span>
+                        <span class="singer-title">{{ song.singer}}</span>
+                    </div>
+                </div>
             </div>
-            <div style="display: flex; align-items: center;">
-                <strong style="margin-right: 10px;">{{ song.album.title }}</strong>
-                <p>{{ song.singer}}</p>    
-            </div>
-        </div>
-    </ng-container>
+        </ng-container>
+    </div>
 </div>
 
 <ng-template #playList>

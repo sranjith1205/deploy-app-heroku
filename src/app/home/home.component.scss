@@ -1,0 +1,72 @@
+.top-header {
+    display: flex;
+    flex-flow: column;
+    padding: 20px 15px;
+
+    button.tab-btn {
+        background-image: linear-gradient(to right,#187de4,#79c3db);
+        border: none;
+        color: #fff;
+        padding: 8px 15px;
+        width: 100px;
+        border-radius: 100px;
+        margin-bottom: 10px;
+    }
+    
+    input.search-ip {
+        height: 32px;
+        border-radius: 100px;
+        background-color: #666;
+        border: none;
+    }
+}
+.play-container {
+    padding: 20px 15px;
+}
+img.play-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+}
+
+.play-icon {
+    display: flex;
+    align-items: baseline;
+}
+
+.play-card {
+    border-bottom: 1px solid #f3f6f9;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 80px auto;
+    grid-gap: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    h3.song-title {
+        margin: 0;
+    }
+    
+    
+    .play-info {
+        margin-bottom: 10px;
+        display: flex;
+    }
+    span.album-title {
+        font-size: 15px;
+        padding-right: 15px;
+        text-transform: capitalize;
+        color: #7a7a7a;
+    }
+    
+    span.singer-title {
+        font-size: 15px;
+        color: #7a7a7a;
+    }
+    
+    p.song-time {
+        color: #ccc;
+        font-size: 14px;
+        padding-left: 5px;
+    }
+}

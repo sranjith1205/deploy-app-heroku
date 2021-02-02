@@ -30,6 +30,7 @@
 </div>
 
 <div *ngIf="playlistPage == 'playlist'">
+    <h3>Playlist Name</h3>
     <ng-container *ngFor="let song of playlist | async">
         <div style="border: 1px solid red; padding: 10px;">
             <div style="display: flex; align-items: center;">
