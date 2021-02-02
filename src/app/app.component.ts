@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'vbiMusic';
+  constructor() {
+    localStorage.setItem('playlistId', '0')
+    localStorage.setItem('playlists', '[]')
+  }
 }

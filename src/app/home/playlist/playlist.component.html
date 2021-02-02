@@ -1,0 +1,49 @@
+<button type="button" (click)="backToHomePage()">Back to Home</button>
+
+<div *ngIf="playlistPage == 'noSong'">
+    <h5>Looking for songs?</h5>
+    <p>Let's build your new playlist</p>
+    <button (click)="addSongToPlaylist()">Add Song</button>
+</div>
+
+<div *ngIf="playlistPage == 'selectSong'">
+    <h3>Select Song</h3>
+    <button (click)="savePlaylist()">Save Playlist</button>
+    <div>
+        <input type="text" (input)="searchSong($event.target.value)">
+        <ng-container *ngFor="let song of songs">
+            <div style="border: 1px solid red; padding: 10px;" 
+                [ngClass]="{'selected': song.isSelected }"
+                (click)="selectSong(song)"
+            >
+                <div style="display: flex; align-items: center;">
+                    <h3 style="margin-right: 10px;">{{ song.title }} </h3>
+                    <p>{{ song.playTime }}</p>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <strong style="margin-right: 10px;">{{ song.album.title }}</strong>
+                    <p>{{ song.singer}}</p>    
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf="playlistPage == 'playlist'">
+    <ng-container *ngFor="let song of playlist | async">
+        <div style="border: 1px solid red; padding: 10px;">
+            <div style="display: flex; align-items: center;">
+                <h3 style="margin-right: 10px;">{{ song.title }} </h3>
+                <p>{{ song.playTime }}</p>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <strong style="margin-right: 10px;">{{ song.album.title }}</strong>
+                <p>{{ song.singer}}</p>    
+            </div>
+        </div>
+    </ng-container>
+    <button (click)="addSongToPlaylist()">Add Song</button>
+</div>
+
+
+

@@ -1,5 +1,5 @@
-
 <div *ngIf="isAllSongs; else playList">
+    <button type="button" (click)="goToPlaylistTab()">playlist tab</button>
     <input type="text" (input)="searchSong($event.target.value)">
     <ng-container *ngFor="let song of songs | async">
         <div style="border: 1px solid red; padding: 10px">
@@ -16,6 +16,17 @@
 </div>
 
 <ng-template #playList>
+    <button type="button" (click)="goToAllSongTab()">All song tab</button>
     <h1>Playlist</h1>
     <button type="button" (click)="createPlaylist()">Create Playlist</button>
+    <div *ngFor="let playlist of playlists" (click)="goToPlaylist(playlist)">
+        <div style="border: 1px solid red; padding: 10px">
+            <div style="display: flex; align-items: center;">
+                <h3 style="margin-right: 10px;">{{ playlist.name }} </h3>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <strong style="margin-right: 10px;">{{ playlist.createdAt | date: 'short' }}</strong>
+            </div>
+        </div>
+    </div>
 </ng-template>

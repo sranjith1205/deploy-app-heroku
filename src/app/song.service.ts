@@ -23,4 +23,16 @@ export class SongService {
     return this.http.get<{ id: number, userId: number, title: string }[]>(`${this.url}/albums`)
   }
 
+  songs = combineLatest([this.getSong(), this.getAlbum()]).pipe(
+    map(([songs, albums]) => {
+      songs.map( song => {
+        song['playTime'] = '05:00';
+        song['singer'] = 'AR Rahman';
+        song['album'] = albums.find(album => album.id == song.albumId);
+        song['isSelected'] = false;
+        return song;
+      })
+      return songs;
+    })
+  )
 }
