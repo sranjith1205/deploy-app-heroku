@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "vbiMusic"
+  "defaultProject": "vbiMusic",
+  "cli": {
+    "analytics": "75b06f82-f489-4e83-8317-2694961d91f8"
+  }
 }

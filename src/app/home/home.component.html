@@ -1,0 +1,21 @@
+
+<div *ngIf="isAllSongs; else playList">
+    <input type="text" (input)="searchSong($event.target.value)">
+    <ng-container *ngFor="let song of songs | async">
+        <div style="border: 1px solid red; padding: 10px">
+            <div style="display: flex; align-items: center;">
+                <h3 style="margin-right: 10px;">{{ song.title }} </h3>
+                <p>{{ song.playTime }}</p>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <strong style="margin-right: 10px;">{{ song.album.title }}</strong>
+                <p>{{ song.singer}}</p>    
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #playList>
+    <h1>Playlist</h1>
+    <button type="button" (click)="createPlaylist()">Create Playlist</button>
+</ng-template>
