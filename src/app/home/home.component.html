@@ -1,39 +1,46 @@
-<div *ngIf="isAllSongs; else playList">
-    <div class="top-header">
-        <button type="button" class="tab-btn" (click)="goToPlaylistTab()">playlist tab</button>
-        <input type="text" class="search-ip" (input)="searchSong($event.target.value)">
-    </div>
-    <div class="play-container">
-        <ng-container *ngFor="let song of songs | async">
-            <div class="play-card">
-                <div class="play-icon">
-                    <img src="assets/92c952.png" class="play-img" />
+<mat-tab-group mat-align-tabs="center" #musicTab>
+    <mat-tab label="All Song">
+        <div class="top-header">
+            <input type="text" class="search-ip" (input)="searchSong($event.target.value)">
+        </div>
+        <div class="play-container">
+            <ng-container *ngFor="let song of songs | async">
+                <div class="play-card">
+                    <div class="play-icon">
+                        <img [src]="song.thumbnailUrl" class="play-img" />
+                    </div>
+                    <div>
+                        <h3 class="song-title">{{ song.title }} </h3>
+                        <p class="album-title">{{ song.album.title }}</p>
+                        <div class="player-info">
+                            <span class="singer-title">{{ song.singer}}</span>
+                            <span class="song-time">{{ song.playTime }}</span>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="song-title">{{ song.title }} </h3>
-                    <p class="album-title">{{ song.album.title }}</p>
-                    <div class="player-info">
-                        <span class="singer-title">{{ song.singer}}</span>
-                        <span class="song-time">{{ song.playTime }}</span>
+            </ng-container>
+        </div>
+    </mat-tab>
+    
+    <mat-tab label="Playlist">
+        <div class="add-playlist-wrapper" (click)="createPlaylist()">
+            <mat-icon>add</mat-icon>
+            <p class="create-playlist-text">Create Playlist</p>
+        </div>
+        <div *ngFor="let playlist of playlists" (click)="goToPlaylist(playlist)">
+            <div class="playlist-wrapper">
+                <img src="assets/playlist_icon" class="playlist-img" />
+                <div class="playlist-content">
+                    <div class="playlist-upper-content">
+                        <h3 class="playlist-name"> {{ playlist.name }} </h3>
+                        <span> {{ playlist.createdAt | date: 'short' }} </span>
+                    </div>
+                    <div class="playlist-lower-content">
+                        <span>{{ playlist.songs.length }} songs</span>
+                        <mat-icon>delete</mat-icon>
                     </div>
                 </div>
             </div>
-        </ng-container>
-    </div>
-</div>
-
-<ng-template #playList>
-    <button type="button" (click)="goToAllSongTab()">All song tab</button>
-    <h1>Playlist</h1>
-    <button type="button" (click)="createPlaylist()">Create Playlist</button>
-    <div *ngFor="let playlist of playlists" (click)="goToPlaylist(playlist)">
-        <div style="border: 1px solid red; padding: 10px">
-            <div style="display: flex; align-items: center;">
-                <h3 style="margin-right: 10px;">{{ playlist.name }} </h3>
-            </div>
-            <div style="display: flex; align-items: center;">
-                <strong style="margin-right: 10px;">{{ playlist.createdAt | date: 'short' }}</strong>
-            </div>
         </div>
-    </div>
-</ng-template>
+    </mat-tab>
+</mat-tab-group>

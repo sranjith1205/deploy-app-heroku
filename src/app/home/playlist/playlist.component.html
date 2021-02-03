@@ -1,9 +1,12 @@
-<button type="button" (click)="backToHomePage()">Back to Home</button>
+<!-- <button type="button" (click)="backToHomePage()">Back to Home</button> -->
 
-<div *ngIf="playlistPage == 'noSong'">
-    <h5>Looking for songs?</h5>
-    <p>Let's build your new playlist</p>
-    <button (click)="addSongToPlaylist()">Add Song</button>
+<div *ngIf="playlistPage == 'noSong'" class="no-song-container">
+    <mat-icon (click)="backToHomePage()">arrow_back</mat-icon>
+    <div class="no-song-wrapper">
+        <h5 class="looking-song">Looking for songs?</h5>
+        <p class="build-playlist">Let's build your new playlist</p>
+        <button mat-flat-button color="primary" class="add-song-btn" (click)="addSongToPlaylist()">Add Song</button>
+    </div>
 </div>
 
 <div *ngIf="playlistPage == 'selectSong'">

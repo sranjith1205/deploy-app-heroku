@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SongService } from '../song.service';
 import { BehaviorSubject, combineLatest, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatTabGroup } from '@angular/material/tabs';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  isAllSongs = true;
+  @ViewChild("musicTab", { static: false }) musicTab: MatTabGroup;
+  // isAllSongs = true;
   searchSongString = new BehaviorSubject('');
   playlists = JSON.parse(localStorage.getItem('playlists'));
 
@@ -29,9 +31,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(this.route.snapshot.fragment == 'playlist') {
-      this.isAllSongs = false;
-    }
+    // if(this.route.snapshot.fragment == 'playlist') {
+    //   this.isAllSongs = false;
+    // }
+    this.songs.subscribe(data => console.log(data))
   }
 
   searchSong(string) {
@@ -43,11 +46,13 @@ export class HomeComponent implements OnInit {
   }
 
   goToPlaylistTab() {
-   this.isAllSongs = false; 
+  //  this.isAllSongs = false;
+    this.musicTab.selectedIndex = 1;
   }
 
   goToAllSongTab() {
-    this.isAllSongs = true;
+    // this.isAllSongs = true;
+    this.musicTab.selectedIndex = 0;
   }
 
   goToPlaylist(playlist) {

@@ -1,3 +1,35 @@
+h5, p {
+    margin: 0;
+}
+
 .selected {
     background: aqua;
+}
+
+.no-song-container {
+    height: 100%;
+    padding: 20px 15px;
+    mat-icon {
+        font-size: 35px;
+    }
+
+    .no-song-wrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        .looking-song {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .build-playlist {
+            font-size: 14px;
+            margin-bottom: 35px;
+        }
+
+        .add-song-btn {
+            background: #00c853;
+        }
+    }
+
 }
