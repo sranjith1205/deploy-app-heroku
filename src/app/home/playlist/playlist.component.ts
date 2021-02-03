@@ -81,6 +81,10 @@ export class PlaylistComponent implements OnInit {
     this.playlistPage = 'playlist';
   }
 
+  goToPlaylistPage() {
+    this.playlistPage = 'playlist';
+  }
+
   searchSong(string) {
     this.searchSongString.next(string);
   }
@@ -100,7 +104,9 @@ export class PlaylistComponent implements OnInit {
   }
 
   backToHomePage() {
-    this.router.navigate([''], { fragment: 'playlist' });
+    // this.router.navigate([''], { fragment: 'playlist' });
+    this.router.navigate(['']);
+
   }
 
 }

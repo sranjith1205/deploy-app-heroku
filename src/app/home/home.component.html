@@ -1,6 +1,6 @@
 <mat-tab-group mat-align-tabs="center" #musicTab>
     <mat-tab label="All Song">
-        <div class="top-header">
+        <div class="search-bar-wrap">
             <input type="text" class="search-ip" (input)="searchSong($event.target.value)">
         </div>
         <div class="play-container">
@@ -21,7 +21,7 @@
             </ng-container>
         </div>
     </mat-tab>
-    
+
     <mat-tab label="Playlist">
         <div class="add-playlist-wrapper" (click)="createPlaylist()">
             <mat-icon>add</mat-icon>

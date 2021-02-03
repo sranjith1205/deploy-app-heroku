@@ -13,7 +13,6 @@ import { MatTabGroup } from '@angular/material/tabs';
 })
 export class HomeComponent implements OnInit {
   @ViewChild("musicTab", { static: false }) musicTab: MatTabGroup;
-  // isAllSongs = true;
   searchSongString = new BehaviorSubject('');
   playlists = JSON.parse(localStorage.getItem('playlists'));
 
@@ -34,7 +33,6 @@ export class HomeComponent implements OnInit {
     // if(this.route.snapshot.fragment == 'playlist') {
     //   this.isAllSongs = false;
     // }
-    this.songs.subscribe(data => console.log(data))
   }
 
   searchSong(string) {
@@ -45,18 +43,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['playlist/0']);
   }
 
-  goToPlaylistTab() {
-  //  this.isAllSongs = false;
-    this.musicTab.selectedIndex = 1;
-  }
-
-  goToAllSongTab() {
-    // this.isAllSongs = true;
-    this.musicTab.selectedIndex = 0;
-  }
-
   goToPlaylist(playlist) {
-    console.log(playlist);
     this.router.navigateByUrl(`playlist/${playlist.id}`);
   }
 

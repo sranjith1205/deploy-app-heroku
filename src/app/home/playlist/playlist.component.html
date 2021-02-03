@@ -1,5 +1,3 @@
-<!-- <button type="button" (click)="backToHomePage()">Back to Home</button> -->
-
 <div *ngIf="playlistPage == 'noSong'" class="no-song-container">
     <mat-icon (click)="backToHomePage()">arrow_back</mat-icon>
     <div class="no-song-wrapper">
@@ -9,44 +7,71 @@
     </div>
 </div>
 
-<div *ngIf="playlistPage == 'selectSong'">
-    <h3>Select Song</h3>
-    <button (click)="savePlaylist()">Save Playlist</button>
-    <div>
-        <input type="text" (input)="searchSong($event.target.value)">
+<div *ngIf="playlistPage == 'selectSong'" class="add-song-container">
+    <div class="add-song-header-wrap">
+        <div class="add-song-header">
+            <mat-icon (click)="goToPlaylistPage()">arrow_back</mat-icon>
+            <h3>Add Songs</h3>
+        </div>
+        <span>Cancel</span>
+    </div>
+    <div class="search-bar-wrap">
+        <input type="text" class="search-ip" (input)="searchSong($event.target.value)">
+    </div>
+    <div class="add-song-content">
         <ng-container *ngFor="let song of songs">
-            <div style="border: 1px solid red; padding: 10px;" 
+            <div class="play-card" 
                 [ngClass]="{'selected': song.isSelected }"
                 (click)="selectSong(song)"
             >
-                <div style="display: flex; align-items: center;">
-                    <h3 style="margin-right: 10px;">{{ song.title }} </h3>
-                    <p>{{ song.playTime }}</p>
+                <div class="play-play-iconicon">
+                    <img [src]="song.thumbnailUrl" class="play-img" />
                 </div>
-                <div style="display: flex; align-items: center;">
-                    <strong style="margin-right: 10px;">{{ song.album.title }}</strong>
-                    <p>{{ song.singer}}</p>    
+                <div>
+                    <h3 class="song-title">{{ song.title }} </h3>
+                    <p class="album-title">{{ song.album.title }}</p>
+                    <div class="player-info">
+                        <span class="singer-title">{{ song.singer}}</span>
+                        <span class="song-time">{{ song.playTime }}</span>
+                    </div>
                 </div>
             </div>
         </ng-container>
     </div>
+
+    <div class="add-song-footer">
+        <div class="noOfSong-added">5 Songs Added</div>
+        <div class="save-playlist" (click)="savePlaylist()">Save Playlist</div>
+    </div>
 </div>
 
-<div *ngIf="playlistPage == 'playlist'">
-    <h3>Playlist Name</h3>
+<div *ngIf="playlistPage == 'playlist'" class="playlist-container">
+    <div class="playlist-header">
+        <div class="playlist-title">
+            <mat-icon (click)="backToHomePage()">arrow_back</mat-icon>
+            <h3>Playlist Name</h3>
+        </div>
+        <div class="playlist-option">
+            <mat-icon class="playlist-add-ic" (click)="addSongToPlaylist()">playlist_add</mat-icon>
+            <mat-icon>shuffle</mat-icon>
+        </div>
+    </div>
+
     <ng-container *ngFor="let song of playlist | async">
-        <div style="border: 1px solid red; padding: 10px;">
-            <div style="display: flex; align-items: center;">
-                <h3 style="margin-right: 10px;">{{ song.title }} </h3>
-                <p>{{ song.playTime }}</p>
+        <div class="play-card">
+            <div class="play-play-iconicon">
+                <img [src]="song.thumbnailUrl" class="play-img" />
             </div>
-            <div style="display: flex; align-items: center;">
-                <strong style="margin-right: 10px;">{{ song.album.title }}</strong>
-                <p>{{ song.singer}}</p>    
+            <div>
+                <h3 class="song-title">{{ song.title }} </h3>
+                <p class="album-title">{{ song.album.title }}</p>
+                <div class="player-info">
+                    <span class="singer-title">{{ song.singer}}</span>
+                    <span class="song-time">{{ song.playTime }}</span>
+                </div>
             </div>
         </div>
     </ng-container>
-    <button (click)="addSongToPlaylist()">Add Song</button>
 </div>
 
 
