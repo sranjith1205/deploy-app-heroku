@@ -9,14 +9,12 @@
                 <div class="play-icon">
                     <img src="assets/92c952.png" class="play-img" />
                 </div>
-                <div class="play-content">
-                    <div class="play-info">
-                        <h3 class="song-title">{{ song.title }} </h3>
-                        <p class="song-time">{{ song.playTime }}</p>
-                    </div>
+                <div>
+                    <h3 class="song-title">{{ song.title }} </h3>
+                    <p class="album-title">{{ song.album.title }}</p>
                     <div class="player-info">
-                        <span class="album-title">{{ song.album.title }}</span>
                         <span class="singer-title">{{ song.singer}}</span>
+                        <span class="song-time">{{ song.playTime }}</span>
                     </div>
                 </div>
             </div>

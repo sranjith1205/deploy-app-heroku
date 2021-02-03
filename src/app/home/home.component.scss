@@ -1,3 +1,8 @@
+h3, p {
+    padding: 0;
+    margin: 0;
+}
+
 .top-header {
     display: flex;
     flex-flow: column;
@@ -18,6 +23,8 @@
         border-radius: 100px;
         background-color: #666;
         border: none;
+        outline: none;
+        padding: 0 13px;
     }
 }
 .play-container {
@@ -36,37 +43,39 @@ img.play-img {
 
 .play-card {
     border-bottom: 1px solid #f3f6f9;
-    padding: 0;
     display: grid;
     grid-template-columns: 80px auto;
     grid-gap: 20px;
     padding-bottom: 20px;
     margin-bottom: 20px;
 
-    h3.song-title {
-        margin: 0;
-    }
-    
-    
-    .play-info {
-        margin-bottom: 10px;
-        display: flex;
-    }
-    span.album-title {
-        font-size: 15px;
-        padding-right: 15px;
+    .song-title {
         text-transform: capitalize;
-        color: #7a7a7a;
+    }
+
+    .player-info {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
     }
     
-    span.singer-title {
+    .singer-title {
         font-size: 15px;
         color: #7a7a7a;
     }
     
-    p.song-time {
+    .song-time {
         color: #ccc;
         font-size: 14px;
-        padding-left: 5px;
+        color: #7a7a7a;
     }
+
+    .album-title {
+        font-size: 15px;
+        text-transform: capitalize;
+        color: #7a7a7a;
+        margin: 5px 0;
+    }    
+
 }
+
