@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment.prod'
 
 @Injectable({
   providedIn: 'root'
